@@ -1,11 +1,16 @@
 Typer Problem   
-    
+
 Kita mencari developer yang mandiri, ketika ada masalah, aktif mencari solusi dengan sendirinya dan mudah mengerti instruksi tanpa terlalu banyak menanyakan untuk memahami instruksi.     
 Berikut adalah aplikasi Javascript yang simple.    
 Kami tidak akan menjelaskan bagaimana cara kerjanya atau library apa yang dipakai.   
-    
+
 Pertanyaan:   
 1. Sebutkan library apa saja yang dipakai, website library itu dimana, dan dokumentasi library itu ada dimana.    
+  * jQuery - https://jquery.com/ - doc[[jQuery](http://api.jquery.com/)]
+  * jQuery UI - https://jqueryui.com/ - doc[[jQuery UI](http://api.jqueryui.com/)]
+  * UnderscoreJS - http://underscorejs.org/ - doc[[UnderscoreJS](http://underscorejs.org/)]
+  * BackboneJS - http://backbonejs.org/ - doc[[BackboneJS](http://backbonejs.org/)]
+  * Bootstrap - http://getbootstrap.com/ - doc[[Bootstrap](http://getbootstrap.com/getting-started/)]
 2. Aplikasi itu 'laggy'. Kenapa? Bagaimana cara membuat animasi lebih 'smooth'?    
 3. Aplikasi itu tidak akan jalan di salah satu 3 browser populer (Chrome, Firefox, Internet Explorer)? Kenapa? Solusinya hanya menghapus satu character di code, character yang mana?    
 4. Implementasikan tombol Start, Stop, Pause, dan Resume.   
