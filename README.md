@@ -12,6 +12,7 @@ Pertanyaan:
   * BackboneJS - http://backbonejs.org/ - doc[[BackboneJS](http://backbonejs.org/)]
   * Bootstrap - http://getbootstrap.com/ - doc[[Bootstrap](http://getbootstrap.com/getting-started/)]
 2. Aplikasi itu 'laggy'. Kenapa? Bagaimana cara membuat animasi lebih 'smooth'?    
+  * aplikasi laggy aplikasi tidak memaksimalkan fps diberikan daripada display. oleh karena itu, saya ubah delay jadi " 2dtk/60fps " dan menambahkan fungsi bawaan javascript untuk handle animasi " requestAnimationFrame ". Sebenarnya untuk animasi kita tidak disarankan memakai setInterval / setTimeout. Tapi untuk kasus simple, cukup saya tambahkan requestAnimationFrame callback saja.
 3. Aplikasi itu tidak akan jalan di salah satu 3 browser populer (Chrome, Firefox, Internet Explorer)? Kenapa? Solusinya hanya menghapus satu character di code, character yang mana?    
 4. Implementasikan tombol Start, Stop, Pause, dan Resume.   
 5. Ketika ukuran window dirubah, susunan huruf yang 'terbentur' batas window menjadi tidak 1 baris. Benarkan.    

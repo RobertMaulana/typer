@@ -31,12 +31,12 @@ var WordView = Backbone.View.extend({
 					})
 					.text(string.charAt(i).toUpperCase()));
 		}
-		
+
 		this.listenTo(this.model, 'remove', this.remove);
-		
+
 		this.render();
 	},
-	
+
 	render:function() {
 		$(this.el).css({
 			top:this.model.get('y') + 'px',
@@ -64,7 +64,7 @@ var TyperView = Backbone.View.extend({
 				height:'100%'
 			});
 		this.wrapper = wrapper;
-		
+
 		var self = this;
 		var text_input = $('<input>')
 			.addClass('form-control')
@@ -92,7 +92,7 @@ var TyperView = Backbone.View.extend({
 					}
 				}
 			});
-		
+
 		$(this.el)
 			.append(wrapper
 				.append($('<form>')
@@ -103,17 +103,17 @@ var TyperView = Backbone.View.extend({
 						return false;
 					})
 					.append(text_input)));
-		
+
 		text_input.css({left:((wrapper.width() - text_input.width()) / 2) + 'px'});
 		text_input.focus();
-		
+
 		this.listenTo(this.model, 'change', this.render);
 	},
-	
+
 	render: function() {
 		var model = this.model;
 		var words = model.get('words');
-		
+
 		for(var i = 0;i < words.length;i++) {
 			var word = words.at(i);
 			if(!word.get('view')) {
@@ -140,7 +140,7 @@ var Typer = Backbone.Model.extend({
 		min_speed:1,
 		max_speed:5,
 	},
-	
+
 	initialize: function() {
 		new TyperView({
 			model: this,
@@ -149,13 +149,19 @@ var Typer = Backbone.Model.extend({
 	},
 
 	start: function() {
-		var animation_delay = 100;
+
+		/*-optimize for animation and runs as fast as we display allow (~60 fps)-*/
+		var animation_delay = 2000/60;
 		var self = this;
-		setInterval(function() {
-			self.iterate();
-		},animation_delay);
+
+		/*-tell browser to use animation frame-*/
+		window.requestAnimationFrame(function(){
+			setInterval(function() {
+				self.iterate();
+			},animation_delay);
+		})
 	},
-	
+
 	iterate: function() {
 		var words = this.get('words');
 		if(words.length < this.get('max_num_words')) {
@@ -168,7 +174,7 @@ var Typer = Backbone.Model.extend({
 					top_most_word = word;
 				}
 			}
-			
+
 			if(!top_most_word || top_most_word.get('y') > this.get('min_distance_between_words')) {
 				var random_company_name_index = this.random_number_from_interval(0,company_names.length - 1);
 				var string = company_names[random_company_name_index];
@@ -178,7 +184,7 @@ var Typer = Backbone.Model.extend({
 						filtered_string += string.charAt(j);
 					}
 				}
-				
+
 				var word = new Word({
 					x:this.random_number_from_interval(0,$(window).width()),
 					y:0,
@@ -188,28 +194,28 @@ var Typer = Backbone.Model.extend({
 				words.add(word);
 			}
 		}
-		
+
 		var words_to_be_removed = [];
 		for(var i = 0;i < words.length;i++) {
 			var word = words.at(i);
 			word.move();
-			
+
 			if(word.get('y') > $(window).height() || word.get('move_next_iteration')) {
 				words_to_be_removed.push(word);
 			}
-			
+
 			if(word.get('highlight') && word.get('string').length == word.get('highlight')) {
 				word.set({move_next_iteration:true});
 			}
 		}
-		
+
 		for(var i = 0;i < words_to_be_removed.length;i++) {
 			words.remove(words_to_be_removed[i]);
 		}
-		
+
 		this.trigger('change');
 	},
-	
+
 	random_number_from_interval: function(min,max) {
 	    return Math.floor(Math.random()*(max-min+1)+min);
 	}
