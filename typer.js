@@ -138,7 +138,8 @@ var Typer = Backbone.Model.extend({
 		min_distance_between_words:50,
 		words:new Words(),
 		min_speed:1,
-		max_speed:5,
+		/*- Trailing comma error in IE <9 -*/
+		max_speed:5, //<--
 	},
 
 	initialize: function() {

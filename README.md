@@ -6,16 +6,21 @@ Kami tidak akan menjelaskan bagaimana cara kerjanya atau library apa yang dipaka
 
 Pertanyaan:   
 1. Sebutkan library apa saja yang dipakai, website library itu dimana, dan dokumentasi library itu ada dimana.    
-  * jQuery - https://jquery.com/ - doc[[jQuery](http://api.jquery.com/)]
-  * jQuery UI - https://jqueryui.com/ - doc[[jQuery UI](http://api.jqueryui.com/)]
-  * UnderscoreJS - http://underscorejs.org/ - doc[[UnderscoreJS](http://underscorejs.org/)]
-  * BackboneJS - http://backbonejs.org/ - doc[[BackboneJS](http://backbonejs.org/)]
-  * Bootstrap - http://getbootstrap.com/ - doc[[Bootstrap](http://getbootstrap.com/getting-started/)]
-  ##### Commit log: 0da42af
+
+    | Plugin | DOC | Official
+    | ------ | ------ | ------ |
+    | jQuery | [jQuery](http://api.jquery.com/) | https://jquery.com/
+    | jQuery UI | [jQuery UI](http://api.jqueryui.com/) | https://jqueryui.com/
+    | UnderscoreJS | [UnderscoreJS](http://underscorejs.org/) | http://underscorejs.org/
+    | BackboneJS | [BackboneJS](http://backbonejs.org/) | http://backbonejs.org/
+    | Bootstrap | [Bootstrap](http://getbootstrap.com/getting-started/) | http://getbootstrap.com/
+
+    ##### Commit log: 0da42af
 2. Aplikasi itu 'laggy'. Kenapa? Bagaimana cara membuat animasi lebih 'smooth'?    
-  * aplikasi laggy aplikasi tidak memaksimalkan fps diberikan daripada display. oleh karena itu, saya ubah delay jadi " 2dtk/60fps " dan menambahkan fungsi bawaan javascript untuk handle animasi " requestAnimationFrame ". Sebenarnya untuk animasi kita tidak disarankan memakai setInterval / setTimeout. Tapi untuk kasus simple, cukup saya tambahkan requestAnimationFrame callback saja.
-  ##### Commit log: 0a5381e
-3. Aplikasi itu tidak akan jalan di salah satu 3 browser populer (Chrome, Firefox, Internet Explorer)? Kenapa? Solusinya hanya menghapus satu character di code, character yang mana?    
+    * Aplikasi laggy aplikasi tidak memaksimalkan fps diberikan daripada display. oleh karena itu, saya ubah delay jadi " 2dtk/60fps " dan menambahkan fungsi bawaan javascript untuk handle animasi " requestAnimationFrame ". Sebenarnya untuk animasi kita tidak disarankan memakai setInterval / setTimeout. Tapi untuk kasus simple, cukup saya tambahkan requestAnimationFrame callback saja.
+    ##### Commit log: 0a5381e
+3. Aplikasi itu tidak akan jalan di salah satu 3 browser populer (Chrome, Firefox, Internet Explorer)? Kenapa? Solusinya hanya menghapus satu character di code, character yang mana?
+    * Sebelum masuk ke character mana yang dihapus, saya mencari info terlebih dahulu tentang hal ini dan akhirnya saya baca di situs developer mozilla [[Trailing commas](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Trailing_commas)]. Disana dijelaskan bahwa untuk trailing commas terletak di object literal dan functions. Jadi saya cari object literal yang menuju Model Typer default object (Kita hanya perlu menghapus comma yang ada di key value yang terakhir dari object tersebut). Akan tetapi perlu digaris bawahi, Sejak IE versi 9 keluar, trailing commas sudah tidak menjadi masalah lagi di IE alias sudah sembuh. Tapi untuk IE 9 kebawah hal ini akan bermasalah.
 4. Implementasikan tombol Start, Stop, Pause, dan Resume.   
 5. Ketika ukuran window dirubah, susunan huruf yang 'terbentur' batas window menjadi tidak 1 baris. Benarkan.    
 6. Implementasikan sistem score.   
