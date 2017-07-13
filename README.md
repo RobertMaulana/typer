@@ -21,6 +21,7 @@ Pertanyaan:
     ##### Commit log: 0a5381e
 3. Aplikasi itu tidak akan jalan di salah satu 3 browser populer (Chrome, Firefox, Internet Explorer)? Kenapa? Solusinya hanya menghapus satu character di code, character yang mana?
     * Sebelum masuk ke character mana yang dihapus, saya mencari info terlebih dahulu tentang hal ini dan akhirnya saya baca di situs developer mozilla [[Trailing commas](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Trailing_commas)]. Disana dijelaskan bahwa untuk trailing commas terletak di object literal dan functions. Jadi saya cari object literal yang menuju Model Typer default object (Kita hanya perlu menghapus comma yang ada di key value yang terakhir dari object tersebut). Akan tetapi perlu digaris bawahi, Sejak IE versi 9 keluar, trailing commas sudah tidak menjadi masalah lagi di IE alias sudah sembuh. Tapi untuk IE 9 kebawah hal ini akan bermasalah.
+    ##### Commit log: 730b963
 4. Implementasikan tombol Start, Stop, Pause, dan Resume.   
 5. Ketika ukuran window dirubah, susunan huruf yang 'terbentur' batas window menjadi tidak 1 baris. Benarkan.    
 6. Implementasikan sistem score.   
